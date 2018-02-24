@@ -2,8 +2,7 @@
 // @flow
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import HomeScreen from './src/screens/HomeScreen';
-import StartScreen from './src/screens/StartScreen';
+import { HomeScreen, StartScreen } from './src/screens';
 
 const RootStack = StackNavigator(
   {

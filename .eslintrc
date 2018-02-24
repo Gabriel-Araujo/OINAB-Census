@@ -13,12 +13,23 @@
       "react", "flowtype"
     ],
     "extends": "airbnb",
-  
+    
     "rules": {
       "func-names": ["error", "never"],
       "jsx-quotes": ["error", "prefer-single"],
-      "import/no-unresolved": "off",
-      "import/extensions": "off",
+      "import/no-unresolved": [
+        2,
+        {
+            "ignore": [
+                "react",
+                "react-native"
+            ]
+        }
+      ],
+      "import/no-extraneous-dependencies": 0,
+      "import/extensions": 0,
+      "react/no-unused-prop-types": 0,
+      "react/no-typos": 0,
       "react/jsx-boolean-value": "error",
       "react/jsx-curly-spacing": ["error", "never"],
       "react/jsx-equals-spacing": ["error", "never"],

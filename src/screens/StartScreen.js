@@ -2,9 +2,9 @@
 // @flow
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
+import PropTypes from 'prop-types';
 
-// create a component
-export default class StartScreen extends Component {
+class StartScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state;
 
@@ -26,7 +26,7 @@ export default class StartScreen extends Component {
         <Text>otherParam: {JSON.stringify(otherParam)}</Text>
         <Button
           title='Update the title'
-          onPress={() => this.props.navigation.setParams({otherParam: 'Updated!'})}
+          onPress={() => this.props.navigation.setParams({ otherParam: 'Updated!' })}
         />
         <Button
           title='Go to Details... again'
@@ -40,3 +40,9 @@ export default class StartScreen extends Component {
     );
   }
 }
+
+StartScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
+export { StartScreen };
