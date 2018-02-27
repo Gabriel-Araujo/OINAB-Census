@@ -3,31 +3,29 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import PropTypes from 'prop-types';
+import firebase from 'firebase';
+import { FIREBASE_CONFIG } from '../config/database';
 
 class StartScreen extends Component {
+  
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state;
 
     return {
-      title: params ? params.otherParam : 'A Nested Details Screen',
+      title: 'Nova Acrópole',
     };
   };
 
   render() {
     /* 2. Read the params from the navigation state */
     const { params } = this.props.navigation.state;
-    const itemId = params ? params.itemId : null;
-    const otherParam = params ? params.otherParam : null;
+    const chave = params ? params.chave : null;
+    //const otherParam = params ? params.otherParam : null;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, backgroundColor: '#F4F4F4', alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
-        <Text>itemId: {JSON.stringify(itemId)}</Text>
-        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-        <Button
-          title='Update the title'
-          onPress={() => this.props.navigation.setParams({ otherParam: 'Updated!' })}
-        />
+        <Text>chave: {JSON.stringify(chave)}</Text>
         <Button
           title='Go to Details... again'
           onPress={() => this.props.navigation.navigate('Start')}

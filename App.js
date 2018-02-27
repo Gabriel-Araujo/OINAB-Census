@@ -15,15 +15,11 @@ const RootStack = StackNavigator(
   },
   {
     initialRouteName: 'Home',
-    /* The header config from HomeScreen is now here */
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: '#F4F4F4',
       },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
+      //headerTintColor: '#fff',
     },
   },
 );
