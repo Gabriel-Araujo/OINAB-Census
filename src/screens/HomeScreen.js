@@ -6,6 +6,7 @@ import {
   View,
   Image,
   TextInput,
+  Keyboard,
   KeyboardAvoidingView,
   Button,
 } from 'react-native';
@@ -24,25 +25,37 @@ class HomeScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { chave: '' };
+    this.state = { 
+      chave: '',
+      loading: false,
+    };
   }
 
   componentWillMount() {
     firebase.initializeApp(FIREBASE_CONFIG);
-    this.setState({ chave: 'AA99BB7' });
+    this.setState({ chave: 'AAAAAAA' });
   }
 
   verificaChave() { 
+    if(this.state.chave.length < 7){
+      alert('A chave deve conter 7 caracteres!');
+      return;
+    }
+
+    this.setState({ loading: true });
     firebase.database()
       .ref('chaves/' + this.state.chave)
       .once('value', snapshot => {
         let result = snapshot.val();
-        
+        this.setState({ loading: false });
+
         if(result === null){
-          alert('Chave invalidasss');
+          alert('Chave Inválida');
+          this.setState({ chave: '' });
           return;
         }
 
+        Keyboard.dismiss();
         this.props.navigation.navigate('Start', {
           chave: result,
         });
@@ -51,6 +64,7 @@ class HomeScreen extends React.Component {
   }
   
   render() {
+
     return (
       <View style={styles.container}>
         <KeyboardAvoidingView style={styles.container} behavior='padding'>
@@ -67,13 +81,15 @@ class HomeScreen extends React.Component {
               autoCapitalize='characters'
               maxLength={7}
               onChangeText={chave => this.setState({ chave })}
-              value={this.state.text}
+              value={this.state.chave}
+              onSubmitEditing={() => this.verificaChave()}
             />
           </View>
           <Button
             title='Entrar'
             accessibilityLabel='Entrar'
             color='#367F53'
+            disabled={this.state.loading}
             onPress={() => this.verificaChave()}
           />
           <View style={{ height: 60 }} />

@@ -5,6 +5,7 @@ import { View, Text, Button } from 'react-native';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from '../config/database';
+import HeadNav from '../components/HeadNav';
 
 class StartScreen extends Component {
   
@@ -12,7 +13,7 @@ class StartScreen extends Component {
     const { params } = navigation.state;
 
     return {
-      title: 'Nova Acrópole',
+      headerTitle: <HeadNav />,
     };
   };
 
