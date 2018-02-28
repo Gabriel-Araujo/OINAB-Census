@@ -5,17 +5,20 @@ import {
   Text,
   View,
   Image,
-  TextInput,
-  Keyboard,
-  KeyboardAvoidingView,
   Button,
+  Platform,
+  Keyboard,
+  StatusBar,
+  TextInput,
+  ActivityIndicator,
+  KeyboardAvoidingView,
 } from 'react-native';
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from '../config/database';
 import styles from '../config/styles';
 
 const naNome = require('../img/na-avaliacoes.png');
-const mountain = require('../img/013-mountain.png');
+const acropole = require('../img/acropole.png');
 
 class HomeScreen extends React.Component {
 
@@ -60,15 +63,14 @@ class HomeScreen extends React.Component {
           chave: result,
         });
       });
-    
   }
   
   render() {
-
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView style={styles.container} behavior='padding'>
-          <Image style={styles.mountain} source={mountain} resizeMode='stretch' />
+          <Image style={styles.mountain} source={acropole} resizeMode='stretch' />
           <Image style={styles.naNome} source={naNome} resizeMode='stretch' />
           <Text style={styles.descricao}>Informe o código de acesso:</Text>
           <View style={styles.codigoBox}>
@@ -80,18 +82,26 @@ class HomeScreen extends React.Component {
               placeholder='AA99BB7'
               autoCapitalize='characters'
               maxLength={7}
-              onChangeText={chave => this.setState({ chave })}
+              onChangeText={chave => this.setState({ chave: chave.toUpperCase() })}
               value={this.state.chave}
               onSubmitEditing={() => this.verificaChave()}
             />
           </View>
-          <Button
-            title='Entrar'
-            accessibilityLabel='Entrar'
-            color='#367F53'
-            disabled={this.state.loading}
-            onPress={() => this.verificaChave()}
-          />
+          {
+            !this.state.loading
+            ? <View style={{flexDirection: 'row'}}>
+                <View style={{flex: 1, margin:20}} >
+                  <Button
+                    title='Entrar'
+                    accessibilityLabel='Entrar'
+                    color={Platform.OS === 'ios' ? '#C7EFCF' : '#367F53'}
+                    disabled={this.state.loading}
+                    onPress={() => this.verificaChave()}
+                  />
+                </View>
+              </View>
+            : <ActivityIndicator size="large" color="#00ff00" />
+          }
           <View style={{ height: 60 }} />
         </KeyboardAvoidingView>
       </View>

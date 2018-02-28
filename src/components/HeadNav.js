@@ -10,8 +10,7 @@ class HeadNav extends React.Component {
       <Image
         source={naNome}
         resizeMode='stretch'
-        //style={styles.naNomeNav}
-        style={{ width: 200, height: 76 }}
+        style={{ width: 200, height: 76, alignSelf: 'center' }}
       />
     );
   }
