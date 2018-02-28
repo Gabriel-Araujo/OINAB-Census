@@ -26,47 +26,104 @@ class StartScreen extends Component {
     };
   };
 
+  constructor(props) {
+    super(props);
+    this.state = { 
+      chave: {},
+      filial: {},
+      questionario: {},
+      loading: false,
+    };
+  }
+
   componentWillMount() {
     if (!firebase.apps.length) {
       firebase.initializeApp(FIREBASE_CONFIG);
     }
+
+    const { params } = this.props.navigation.state;
+    const chaveUsuario = params ? params.chave : null;
+
+    this.setState({ chave: chaveUsuario });
+  }
+
+  getFilial() {
+    this.setState({ loading: true });
+    const filialKey = this.state.chave.filial;
+    firebase.database()
+      .ref(`filiais/${filialKey}`)
+      .once('value', snapshot => {
+        let result = snapshot.val();
+        alert(JSON.stringify(result));
+        this.setState({ loading: false });
+
+        if(result === null){
+          alert('Chave Inválida');
+          this.props.navigation.goBack();
+          return;
+        }
+
+        this.setState({ filial: result });
+      });
   }
 
   manterDados() {
-    alert('qwer');
+    this.setState({ loading: true });
+    const filialKey = this.state.chave.filial;
+    const turmaKey = this.state.chave.turma;
+    const questionarioKey = this.state.chave.questionario;
+    firebase.database()
+      .ref(`filiais/${filialKey}/turmas/${turmaKey}/questionarios/${questionarioKey}`)
+      .once('value', snapshot => {
+        let result = snapshot.val();
+        alert(JSON.stringify(result));
+        this.setState({ loading: false });
+
+        if(result === null){
+          alert('Chave Inválida');
+          this.props.navigation.goBack();
+          return;
+        }
+
+        this.setState({ questionario: result });
+      });
   }
 
   render() {
-    const { params } = this.props.navigation.state;
-    const chave = params ? params.chave : null;
-
     return (
-      <View style={{ flex: 1, backgroundColor: '#F4F4F4', alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Filial: </Text>
-        <Text>Turma: </Text>
-        <Text>Evento: </Text>
-        <Text>Avaliacao: </Text>
-        <Button
-          title='Firebase'
-          onPress={() => this.manterDados()}
-        />
-        <Text>chave: {JSON.stringify(chave)}</Text>
-        <View style={{ borderBottomColor: 'black', borderBottomWidth: 1 }} />
-        <View style={{flexDirection: 'row'}}>
-          <View style={{flex:1 , margin:20}} >
-            <Button
-              title='Vamos Começar a Aventura!'
-              accessibilityLabel='Vamos Começar a Aventura!'
-              color='#367F53'
-              onPress={() => this.props.navigation.navigate('Start')}
-            />
+      <ScrollView>
+        <View style={{ flex: 1, backgroundColor: '#F4F4F4', alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Filial: Nova Acrópole { this.state.filial.nome }</Text>
+          <Text>Turma: { JSON.stringify(this.state.filial.turmas) }</Text>
+          <Text>Evento: </Text>
+          <Text>Avaliacao: { this.state.questionario.titulo }</Text>
+          <Button
+            title='Filial'
+            onPress={() => this.getFilial()}
+          />
+          <Button
+            title='Questionario'
+            onPress={() => this.manterDados()}
+          />
+          <Text>chave: {JSON.stringify(this.state.chave)}</Text>
+          <Text>questionario: {JSON.stringify(this.state.questionario)}</Text>
+          <View style={{ borderBottomColor: 'black', borderBottomWidth: 1 }} />
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex:1 , margin:20}} >
+              <Button
+                title='Vamos Começar a Aventura!'
+                accessibilityLabel='Vamos Começar a Aventura!'
+                color='#367F53'
+                onPress={() => this.props.navigation.navigate('Start')}
+              />
+            </View>
           </View>
+          <Button
+            title='Go back'
+            onPress={() => this.props.navigation.goBack()}
+          />
         </View>
-        <Button
-          title='Go back'
-          onPress={() => this.props.navigation.goBack()}
-        />
-      </View>
+      </ScrollView>
     );
   }
 }
