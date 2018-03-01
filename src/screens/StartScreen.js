@@ -32,12 +32,14 @@ class StartScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       chave: {},
+      chaveKey: '',
       questionario: {},
       modelo: {},
       evento: {},
       loading: false,
+      concluido: false,
     };
   }
 
@@ -48,17 +50,18 @@ class StartScreen extends Component {
 
     const { params } = this.props.navigation.state;
     const chaveUsuario = params ? params.chave : null;
+    const chaveKey = params ? params.chaveKey : null;
 
-    this.setState({ chave: chaveUsuario });
+    this.setState({ chave: chaveUsuario, chaveKey: chaveKey });
 
     if(chaveUsuario.publico === 'interno') {
-      this.fetchQuestionario(chaveUsuario);
+      this.fetchQuestionario(chaveUsuario, chaveKey);
     } else if(chaveUsuario.publico === 'externo') {
-      this.fetchEvento(chaveUsuario);
+      this.fetchEvento(chaveUsuario, chaveKey);
     }
   }
 
-  fetchQuestionario(chave) {
+  fetchQuestionario(chave, key) {
     this.setState({ loading: true });
     const filialKey = chave.filial;
     const turmaKey = chave.turma;
@@ -75,7 +78,11 @@ class StartScreen extends Component {
           return;
         }
 
-        this.setState({ questionario: result });
+        this.setState({ 
+          questionario: result,
+          concluido: result.respostas[key].concluido
+        });
+
         this.fetchModelo(result.modelo);
       });
   }
@@ -145,6 +152,7 @@ class StartScreen extends Component {
                 title='Vamos Começar a Aventura!'
                 accessibilityLabel='Vamos Começar a Aventura!'
                 color='#367F53'
+                disabled={this.state.concluido}
                 onPress={() => this.props.navigation.navigate('Survey', {
                   chave: this.state.chave,
                   questionario: this.state.questionario,
@@ -153,6 +161,7 @@ class StartScreen extends Component {
               />
             </View>
           </View>
+          {this.state.concluido ? <Text style={{alignSelf: 'center'}}>Obrigado por suas respostas!</Text> : null}
         </View>
         <View style={{ height: 60 }} />
       </ScrollView>

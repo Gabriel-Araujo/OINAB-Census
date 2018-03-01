@@ -17,6 +17,16 @@ export default StyleSheet.create({
     height: 150,
     alignSelf: 'center',
   },
+  imagemConfirm: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+  },
+  imagemNavButton: {
+    width: 50,
+    height: 50,
+    alignSelf: 'center',
+  },
   naNome: {
     width: 300,
     height: 114,

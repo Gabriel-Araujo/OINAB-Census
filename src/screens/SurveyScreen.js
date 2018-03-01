@@ -15,7 +15,9 @@ import HeadNav from '../components/HeadNav';
 import AboutButton from '../components/AboutButton';
 import styles from '../config/styles';
 
-const barco = require('../img/aventura.png');
+const confirm = require('../img/confirm.png');
+const back = require('../img/back.png');
+const forward = require('../img/forward.png');
 
 class SurveyScreen extends Component {
   
@@ -59,12 +61,17 @@ class SurveyScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#F4F4F4', alignItems: 'center', justifyContent: 'center' }}>
-      <ScrollView>
+      
         <View style={{ flex: 1, padding: 20 }}>
           <Text style={styles.title}>Survey Screen</Text>
-        </View>  
+        </View>
+        <View style={{ flex: 1, flexDirection: 'row', backgroundColor: 'red', justifyContent: 'space-around'}}>
+          <Image style={styles.imagemNavButton} source={back} resizeMode='stretch' />
+          <Image style={styles.imagemConfirm} source={confirm} resizeMode='stretch' />
+          <Image style={styles.imagemNavButton} source={forward} resizeMode='stretch' />
+        </View>
         <View style={{ height: 60 }} />
-      </ScrollView>
+      
       </View>
     );
   }

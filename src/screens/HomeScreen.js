@@ -60,6 +60,7 @@ class HomeScreen extends React.Component {
 
         Keyboard.dismiss();
         this.props.navigation.navigate('Start', {
+          chaveKey: this.state.chave,
           chave: result,
         });
       });
