@@ -1,5 +1,8 @@
 {
   "parser": "babel-eslint",
+  "env": {
+    "react-native/react-native": true
+  },
   "parserOptions": {
       "ecmaVersion": 8,
       "ecmaFeatures": {
@@ -10,7 +13,7 @@
     },
   
     "plugins": [
-      "react", "flowtype"
+      "react", "react-native", "flowtype"
     ],
     "extends": "airbnb",
     
@@ -41,6 +44,10 @@
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
       "react/self-closing-comp": "error",
+      "react-native/no-unused-styles": 2,
+      "react-native/split-platform-components": 2,
+      "react-native/no-inline-styles": 2,
+      "react-native/no-color-literals": 2,
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
     "settings": {

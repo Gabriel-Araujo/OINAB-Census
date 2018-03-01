@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 const window = Dimensions.get('window');
 
@@ -12,7 +12,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  mountain: {
+  imagem: {
     width: 150,
     height: 150,
     alignSelf: 'center',
@@ -42,5 +42,25 @@ export default StyleSheet.create({
     fontSize: 30,
     width: 150,
     height: 36,
+  },
+  title: {
+    fontSize: 28,
+    lineHeight: 34,
+    letterSpacing: Platform.OS === "ios" ? 0.355469 : undefined,
+  },
+  headline: {
+    fontSize: 17,
+    lineHeight: 22,
+    includeFontPadding: false,
+    letterSpacing: Platform.OS === "ios" ? -0.408 : undefined,
+  },
+  subhead: {
+    fontSize: 15,
+    lineHeight: 20,
+    letterSpacing: Platform.OS === "ios" ? -0.24 : undefined,
+  },
+  body: {
+    fontSize: 17,
+    lineHeight: 22,
   },
 });

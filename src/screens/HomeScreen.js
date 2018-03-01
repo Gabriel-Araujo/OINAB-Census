@@ -70,7 +70,7 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <KeyboardAvoidingView style={styles.container} behavior='padding'>
-          <Image style={styles.mountain} source={acropole} resizeMode='stretch' />
+          <Image style={styles.imagem} source={acropole} resizeMode='stretch' />
           <Image style={styles.naNome} source={naNome} resizeMode='stretch' />
           <Text style={styles.descricao}>Informe o código de acesso:</Text>
           <View style={styles.codigoBox}>
