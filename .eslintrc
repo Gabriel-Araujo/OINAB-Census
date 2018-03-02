@@ -44,7 +44,6 @@
       "react/jsx-uses-react": "error",
       "react/jsx-uses-vars": "error",
       "react/self-closing-comp": "error",
-      "react-native/no-unused-styles": 2,
       "react-native/split-platform-components": 2,
       "react-native/no-inline-styles": 2,
       "react-native/no-color-literals": 2,

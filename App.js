@@ -20,7 +20,7 @@ const RootStack = StackNavigator(
     }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Survey',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#115430',

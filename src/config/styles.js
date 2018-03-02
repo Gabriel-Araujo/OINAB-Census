@@ -32,9 +32,6 @@ export default StyleSheet.create({
     height: 114,
     alignSelf: 'center',
   },
-  descricao: {
-    color: '#fff',
-  },
   codigoBox: {
     backgroundColor: '#C7EFCF',
     padding: 10,
@@ -60,6 +57,7 @@ export default StyleSheet.create({
   },
   headline: {
     fontSize: 17,
+    fontWeight: 'bold',
     lineHeight: 22,
     includeFontPadding: false,
     letterSpacing: Platform.OS === "ios" ? -0.408 : undefined,
@@ -72,5 +70,23 @@ export default StyleSheet.create({
   body: {
     fontSize: 17,
     lineHeight: 22,
+  },
+  topicBar: {
+    flex: 1,
+    flexDirection: 'column', 
+    justifyContent: 'center', 
+    padding: 5,
+    backgroundColor: '#217F5E',
+  },
+  questionBar: {
+    flex: 2, 
+    padding: 5,
+    backgroundColor: '#379970',
+  },
+  fontLight: {
+    color: '#fff',
+  },
+  fontDark: {
+    color: '#000',
   },
 });
