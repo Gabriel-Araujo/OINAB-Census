@@ -8,10 +8,10 @@ class AboutButton extends React.Component {
   render() {
     return (
       <TouchableOpacity onPress={() => this.props.navigation.navigate('About')}>
-        <View style={{padding: 10}}>
+        <View style={styles.aboutButtonBox}>
           <Image
             source={dots}
-            style={{ width: 30, height: 30 }}
+            style={styles.imagemNavButton}
           />
         </View>
       </TouchableOpacity>

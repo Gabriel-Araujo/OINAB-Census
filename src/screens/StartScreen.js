@@ -22,7 +22,7 @@ class StartScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTitle: <HeadNav />,
-      headerRight: <AboutButton navigation={ navigation } />,
+      headerRight: <AboutButton navigation={navigation} />,
     };
   };
 
@@ -125,25 +125,25 @@ class StartScreen extends Component {
   render() {
     
     return (
-      <View style={{ flex: 1, backgroundColor: '#F4F4F4', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.startContainer}>
       <ScrollView>
-        <View style={{ flex: 1, padding: 20 }}>
-          { this.state.chave.publico === 'interno' 
-            ? 
-            <View style={{marginBottom: 10}}>
-              <Text style={styles.title}>{ this.state.questionario.titulo }</Text>
-              <Text style={styles.subhead}>{ this.state.questionario.responsavel }</Text>
-            </View>
-            :
-            <View style={{marginBottom: 10}}>
-              <Text style={styles.title}>{ this.state.evento.evento }</Text>
-            </View>
-          }
+        <View style={styles.startScrollView}>
+          <View style={styles.startTitle}>
+            { this.state.chave.publico === 'interno' 
+              ? 
+              <View>
+                <Text style={styles.title}>{ this.state.questionario.titulo }</Text>
+                <Text style={styles.subhead}>{ this.state.questionario.responsavel }</Text>
+              </View>
+              :
+              <Text style={styles.title}>{ this.state.evento.evento }</Text> 
+            }
+          </View>
           <Text style={styles.body}>{ this.state.modelo.descricao }</Text>
-          <View style={{ height: 30 }} />
+          <View style={styles.viewSpace} />
           <Image style={styles.imagem} source={barco} resizeMode='stretch' />
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex:1 , margin:20}} >
+          <View style={styles.buttonRow}>
+            <View style={styles.buttonSpace} >
               <Button
                 title='Vamos Começar a Aventura!'
                 accessibilityLabel='Vamos Começar a Aventura!'
@@ -157,9 +157,9 @@ class StartScreen extends Component {
               />
             </View>
           </View>
-          {this.state.concluido ? <Text style={{alignSelf: 'center'}}>Obrigado por suas respostas!</Text> : null}
+          {this.state.concluido ? <Text style={styles.alignCenter}>Obrigado!</Text> : null}
         </View>
-        <View style={{ height: 60 }} />
+        <View style={styles.viewSpace} />
       </ScrollView>
       </View>
     );

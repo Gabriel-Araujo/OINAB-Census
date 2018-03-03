@@ -8,9 +8,35 @@ export const IMAGE_HEIGHT_SMALL = window.width / 7;
 export default StyleSheet.create({
   container: {
     flex: 7,
-    backgroundColor: '#054D44',//'#115430',
+    backgroundColor: '#054D44', //'#115430',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  startContainer: {
+    flex: 1, 
+    backgroundColor: '#F4F4F4', 
+    alignItems: 'center', 
+    justifyContent: 'center',
+  },
+  startScrollView: { 
+    flex: 1, 
+    padding: 20,
+  },
+  startTitle: {
+    marginBottom: 10
+  },
+  alignCenter: {
+    alignSelf: 'center'
+  },
+  viewSpace: {
+    height: 60,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+  },
+  buttonSpace: {
+    flex: 1, 
+    margin: 20,
   },
   imagem: {
     width: 150,
@@ -23,14 +49,22 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   imagemNavButton: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     alignSelf: 'center',
   },
   naNome: {
     width: 300,
     height: 114,
     alignSelf: 'center',
+  },
+  naNomeNav: { 
+    width: 200, 
+    height: 76, 
+    alignSelf: 'center',
+  },
+  aboutButtonBox:{
+    padding: 10,
   },
   codigoBox: {
     backgroundColor: '#C7EFCF',

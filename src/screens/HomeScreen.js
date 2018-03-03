@@ -88,10 +88,11 @@ class HomeScreen extends React.Component {
               onSubmitEditing={() => this.verificaChave()}
             />
           </View>
-          {
-            !this.state.loading
-            ? <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1, margin:20}} >
+          <View style={styles.buttonRow}>
+            <View style={styles.buttonSpace} >
+              {
+                !this.state.loading
+                ? 
                   <Button
                     title='Entrar'
                     accessibilityLabel='Entrar'
@@ -99,11 +100,11 @@ class HomeScreen extends React.Component {
                     disabled={this.state.loading}
                     onPress={() => this.verificaChave()}
                   />
-                </View>
-              </View>
-            : <ActivityIndicator size="large" color="#00ff00" />
-          }
-          <View style={{ height: 60 }} />
+                : <ActivityIndicator size='large' color='#00ff00' />
+              }
+            </View>
+          </View>
+          <View style={styles.viewSpace} />
         </KeyboardAvoidingView>
       </View>
     );

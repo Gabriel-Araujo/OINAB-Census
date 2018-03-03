@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import {
   View,
   Easing,
@@ -7,18 +7,21 @@ import {
   StyleSheet,
   Dimensions,
   ViewPropTypes
-} from "react-native";
+} from 'react-native';
+
+const colorLight = '#8BD3B2';
+const colorDark = '#379970';
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: "#8BD3B2",
+    backgroundColor: colorLight,
     height: 5,
     borderRadius: 5,
-    overflow: "hidden"
+    overflow: 'hidden',
   },
   fill: {
-    backgroundColor: "#379970",
-    height: 5
+    backgroundColor: colorDark,
+    height: 5,
   }
 });
 
