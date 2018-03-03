@@ -23,10 +23,6 @@ class StartScreen extends Component {
     return {
       headerTitle: <HeadNav />,
       headerRight: <AboutButton navigation={ navigation } />,
-      headerStyle: {
-        backgroundColor: '#115430',
-        height: 100,
-      },
     };
   };
 

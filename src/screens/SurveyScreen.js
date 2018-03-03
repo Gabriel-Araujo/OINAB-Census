@@ -6,6 +6,7 @@ import {
   Text, 
   Image,
   Button,
+  StatusBar,
   ScrollView, 
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -26,10 +27,7 @@ class SurveyScreen extends Component {
     return {
       headerTitle: <HeadNav />,
       headerRight: <AboutButton navigation={ navigation } />,
-      headerStyle: {
-        backgroundColor: '#115430',
-        height: 100,
-      },
+      
     };
   };
 
@@ -69,42 +67,33 @@ class SurveyScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-      
+        <StatusBar barStyle='light-content' />
         <View style={styles.topicBar}>
           <Text style={[styles.headline, styles.fontLight]}>Topico</Text>
         </View>
         <View style={styles.questionBar}>
-          <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
-            <Text style={[styles.title, styles.fontLight]}>Pergunta</Text>
-          </View>
+          <Text style={[styles.body, styles.fontLight]}>Per gunta Pergu nta Pergu ntaP ergun ta Pergu nta?</Text>
         </View>
-        <View style={{ flex: 10, padding: 5, justifyContent: 'space-between' }}>
+        <View style={{ flex: 10, padding: 5 }}>
           <ScrollView contentContainerStyle={{flexGrow: 1}}>
-            <View style={{ flex: 1, alignSelf: 'stretch', justifyContent: 'space-around', backgroundColor: 'yellow', }}>
-              <Text style={styles.body}>Respostas</Text>
-              <Text style={styles.body}>Respostas</Text>
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>Respostas</Text>  
-              <Text style={styles.body}>sacola</Text>  
-            </View>            
-            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
-              <Image style={styles.imagemNavButton} source={back} resizeMode='stretch' />
-              <Image style={styles.imagemConfirm} source={confirm} resizeMode='stretch' />
-              <Image style={styles.imagemNavButton} source={forward} resizeMode='stretch' />
-            </View>
-            <View style={{ flex: 1, padding: 5 }}>
-              <ProgressBar
-                progress={0.5}
-                ref={ref => {
-                  this.progressBar = ref;
-                }}
-              />
+            <View style={{ flex: 1, padding: 5, justifyContent: 'space-around', }}>
+              <View style={{ flex: 7, alignSelf: 'stretch', justifyContent: 'space-around'}}>
+                <Text style={styles.body}>Respostas</Text>  
+                <Text style={styles.body}>sacola</Text>  
+              </View>            
+              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
+                <Image style={styles.imagemNavButton} source={back} resizeMode='stretch' />
+                <Image style={styles.imagemConfirm} source={confirm} resizeMode='stretch' />
+                <Image style={styles.imagemNavButton} source={forward} resizeMode='stretch' />
+              </View>
+              <View style={{ flex: 1, padding: 5, justifyContent: 'center' }}>
+                <ProgressBar
+                  progress={0.5}
+                  ref={ref => {
+                    this.progressBar = ref;
+                  }}
+                />
+              </View>
             </View>
           </ScrollView>
         </View>

@@ -8,7 +8,7 @@ export const IMAGE_HEIGHT_SMALL = window.width / 7;
 export default StyleSheet.create({
   container: {
     flex: 7,
-    backgroundColor: '#115430',
+    backgroundColor: '#054D44',//'#115430',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -18,13 +18,13 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   imagemConfirm: {
-    width: 100,
-    height: 100,
+    width: 60,
+    height: 60,
     alignSelf: 'center',
   },
   imagemNavButton: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     alignSelf: 'center',
   },
   naNome: {
@@ -76,12 +76,15 @@ export default StyleSheet.create({
     flexDirection: 'column', 
     justifyContent: 'center', 
     padding: 5,
-    backgroundColor: '#217F5E',
+    paddingLeft: 15,
+    backgroundColor: '#075E54', //'#217F5E',
   },
   questionBar: {
     flex: 2, 
     padding: 5,
-    backgroundColor: '#379970',
+    paddingLeft: 15,
+    justifyContent: 'center',
+    backgroundColor: '#1F7F74',
   },
   fontLight: {
     color: '#fff',

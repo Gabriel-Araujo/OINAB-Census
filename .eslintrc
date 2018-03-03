@@ -15,8 +15,10 @@
     "plugins": [
       "react", "react-native", "flowtype"
     ],
-    "extends": "airbnb",
-    
+    "extends": [
+      "plugin:flowtype/recommended",
+      "plugin:react-native/all"
+    ],
     "rules": {
       "func-names": ["error", "never"],
       "jsx-quotes": ["error", "prefer-single"],
@@ -33,17 +35,7 @@
       "import/extensions": 0,
       "react/no-unused-prop-types": 0,
       "react/no-typos": 0,
-      "react/jsx-boolean-value": "error",
-      "react/jsx-curly-spacing": ["error", "never"],
-      "react/jsx-equals-spacing": ["error", "never"],
-      "react/jsx-indent": ["error", 2],
-      "react/jsx-indent-props": ["error", 2],
-      "react/jsx-no-duplicate-props": "error",
-      "react/jsx-no-undef": "error",
-      "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
-      "react/self-closing-comp": "error",
+      "valid-jsdoc": "off",
       "react-native/split-platform-components": 2,
       "react-native/no-inline-styles": 2,
       "react-native/no-color-literals": 2,
