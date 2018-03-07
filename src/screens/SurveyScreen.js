@@ -12,12 +12,11 @@ import {
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from '../config/database';
-import HeadNav from '../components/HeadNav';
-import AboutButton from '../components/AboutButton';
-import ProgressBar from '../components/ProgressBar';
+import { HeadNav, AboutButton, ProgressBar } from '../components';
 import styles from '../config/styles';
 
 const confirm = require('../img/confirm.png');
+const confirmDisabled = require('../img/confirm-disabled.png');
 const back = require('../img/back.png');
 const forward = require('../img/forward.png');
 
@@ -27,7 +26,6 @@ class SurveyScreen extends Component {
     return {
       headerTitle: <HeadNav />,
       headerRight: <AboutButton navigation={ navigation } />,
-      
     };
   };
 
@@ -83,12 +81,12 @@ class SurveyScreen extends Component {
               </View>            
               <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
                 <Image style={styles.imagemNavButton} source={back} resizeMode='stretch' />
-                <Image style={styles.imagemConfirm} source={confirm} resizeMode='stretch' />
+                <Image style={styles.imagemConfirm} source={confirmDisabled} resizeMode='stretch' />
                 <Image style={styles.imagemNavButton} source={forward} resizeMode='stretch' />
               </View>
               <View style={{ flex: 1, padding: 5, justifyContent: 'center' }}>
                 <ProgressBar
-                  progress={0.5}
+                  progress={0.3}
                   ref={ref => {
                     this.progressBar = ref;
                   }}

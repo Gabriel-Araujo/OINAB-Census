@@ -23,7 +23,7 @@ export default StyleSheet.create({
     padding: 20,
   },
   startTitle: {
-    marginBottom: 10
+    marginBottom: 12
   },
   alignCenter: {
     alignSelf: 'center'

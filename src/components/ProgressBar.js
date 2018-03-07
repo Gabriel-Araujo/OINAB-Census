@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class ProgressBar extends PureComponent {
+class ProgressBar extends PureComponent {
   static propTypes = {
     width: PropTypes.number,
     easing: PropTypes.any,
@@ -88,3 +88,5 @@ export default class ProgressBar extends PureComponent {
     );
   }
 }
+
+export { ProgressBar };
