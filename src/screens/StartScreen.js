@@ -6,13 +6,19 @@ import {
   Text, 
   Image,
   Button,
+  StatusBar,
   ScrollView,
   ActivityIndicator, 
 } from 'react-native';
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from '../config/database';
-import { HeadNav, AboutButton, AvaliacaoText, ComecarButton } from '../components';
+import { 
+  HeadNav, 
+  PrefaceText,
+  AboutButton,   
+  StartButton, 
+} from '../components';
 import styles from '../config/styles';
 
 const barco = require('../img/aventura.png');
@@ -143,14 +149,15 @@ class StartScreen extends Component {
   render() {
     return (
       <View style={styles.startContainer}>
+        <StatusBar barStyle='light-content' />
         {(this.state.loadingAvaliacao || this.state.loadingModelo) ?
           <ActivityIndicator size='large' color='#075E54' />
           : 
           <ScrollView>
             <View style={styles.startScrollView}>
-              <AvaliacaoText titulo={this.state.titulo} subtitulo={this.state.subtitulo} descricao={this.state.descricao} />
+              <PrefaceText titulo={this.state.titulo} subtitulo={this.state.subtitulo} descricao={this.state.descricao} />
               <Image style={styles.imagem} source={barco} resizeMode='stretch' />
-              <ComecarButton concluido={this.state.concluido} onPress={() => this.comecarAventura()} />
+              <StartButton concluido={this.state.concluido} onPress={() => this.comecarAventura()} />
             </View>
             <View style={styles.viewSpace} />
           </ScrollView>

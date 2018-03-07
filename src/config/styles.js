@@ -6,6 +6,10 @@ export const IMAGE_HEIGHT = window.width / 2;
 export const IMAGE_HEIGHT_SMALL = window.width / 7;
 
 export default StyleSheet.create({
+  flexOne: { 
+    flex: 1,
+    backgroundColor: '#F4F4F4', 
+  },
   container: {
     flex: 7,
     backgroundColor: '#054D44', //'#115430',
@@ -17,6 +21,40 @@ export default StyleSheet.create({
     backgroundColor: '#F4F4F4', 
     alignItems: 'center', 
     justifyContent: 'center',
+  },
+  optionsContainer: {
+    flex: 10, 
+    padding: 5,
+  },
+  optionsScrollView: {
+    flexGrow: 1
+  },
+  optionsView: {
+    flex: 1, 
+    padding: 5, 
+    justifyContent: 'space-around',
+  },
+  answersView: { 
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'space-around'
+  },
+  checkBoxListView: {
+    flex: 7, 
+    alignSelf: 'stretch', 
+    justifyContent: 'space-around'
+  },
+  checkBoxItemView: {
+    padding: 10,
+    flexDirection: 'row',
+    borderColor: '#D0D0D0', //'#737373',
+    borderRadius: 10,
+    borderWidth: 1,
+  },
+  progressBarView: {
+    flex: 1, 
+    padding: 5, 
+    justifyContent: 'center'
   },
   startScrollView: { 
     flex: 1, 
@@ -109,7 +147,7 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'column', 
     justifyContent: 'center', 
-    padding: 5,
+    padding: 10,
     paddingLeft: 15,
     backgroundColor: '#075E54', //'#217F5E',
   },

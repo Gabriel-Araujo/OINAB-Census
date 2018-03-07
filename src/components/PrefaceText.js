@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import styles from '../config/styles';
 
-const AvaliacaoText = (props) => (
+const PrefaceText = (props) => (
   <View style={styles.startTitle}>
     <View style={styles.startTitle}>
           <Text style={styles.title}>{ props.titulo }</Text>
@@ -12,4 +12,4 @@ const AvaliacaoText = (props) => (
   </View>
 );
 
-export { AvaliacaoText };
+export { PrefaceText };

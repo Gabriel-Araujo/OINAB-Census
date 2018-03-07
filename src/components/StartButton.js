@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import styles from '../config/styles';
 
-const ComecarButton = (props) => (
+const StartButton = (props) => (
   <View style={styles.startTitle}>
     <View style={styles.buttonRow}>
       <View style={styles.buttonSpace} >
@@ -19,4 +19,4 @@ const ComecarButton = (props) => (
   </View>
 );
 
-export { ComecarButton };
+export { StartButton };

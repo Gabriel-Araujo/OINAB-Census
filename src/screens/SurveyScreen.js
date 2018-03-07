@@ -12,13 +12,16 @@ import {
 import PropTypes from 'prop-types';
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from '../config/database';
-import { HeadNav, AboutButton, ProgressBar } from '../components';
+import { 
+  HeadNav,
+  TopicBar,
+  AnswersBar,
+  QuestionBar,
+  AboutButton, 
+  ProgressBar,
+  CheckBoxList,
+} from '../components';
 import styles from '../config/styles';
-
-const confirm = require('../img/confirm.png');
-const confirmDisabled = require('../img/confirm-disabled.png');
-const back = require('../img/back.png');
-const forward = require('../img/forward.png');
 
 class SurveyScreen extends Component {
   
@@ -35,22 +38,26 @@ class SurveyScreen extends Component {
       chave: {},
       questionario: {},
       modelo: {},
-      index: 0,
+      indexTopico: 0,
+      indexInstrutor: 0,
+      indexPergunta: 0,
       loading: false,
     };
   }
 
   componentWillMount() {
-    /*
     if (!firebase.apps.length) {
       firebase.initializeApp(FIREBASE_CONFIG);
     }
 
     const { params } = this.props.navigation.state;
-    const chaveUsuario = params ? params.chave : null;
+    const chave = params ? params.chave : null;
+    const questionario = params ? params.questionario : null;
+    const modelo = params ? params.modelo : null;
 
-    this.setState({ chave: chaveUsuario });
-    */
+    this.setState({ chave, questionario, modelo });
+
+    
   }
 
   componentDidMount() {
@@ -64,33 +71,18 @@ class SurveyScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.flexOne}>
         <StatusBar barStyle='light-content' />
-        <View style={styles.topicBar}>
-          <Text style={[styles.headline, styles.fontLight]}>Topico</Text>
-        </View>
-        <View style={styles.questionBar}>
-          <Text style={[styles.body, styles.fontLight]}>Per gunta Pergu nta Pergu ntaP ergun ta Pergu nta?</Text>
-        </View>
-        <View style={{ flex: 10, padding: 5 }}>
-          <ScrollView contentContainerStyle={{flexGrow: 1}}>
-            <View style={{ flex: 1, padding: 5, justifyContent: 'space-around', }}>
-              <View style={{ flex: 7, alignSelf: 'stretch', justifyContent: 'space-around'}}>
-                <Text style={styles.body}>Respostas</Text>  
-                <Text style={styles.body}>sacola</Text>  
-              </View>            
-              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around'}}>
-                <Image style={styles.imagemNavButton} source={back} resizeMode='stretch' />
-                <Image style={styles.imagemConfirm} source={confirmDisabled} resizeMode='stretch' />
-                <Image style={styles.imagemNavButton} source={forward} resizeMode='stretch' />
-              </View>
-              <View style={{ flex: 1, padding: 5, justifyContent: 'center' }}>
-                <ProgressBar
-                  progress={0.3}
-                  ref={ref => {
-                    this.progressBar = ref;
-                  }}
-                />
+        <TopicBar topico={this.state.modelo.topicos[this.state.indexTopico].titulo} subtopico={false}/>
+        <QuestionBar pergunta={this.state.modelo.topicos[this.state.indexTopico].perguntas[this.state.indexPergunta].pergunta}/>
+        <View style={styles.optionsContainer}>
+          <ScrollView contentContainerStyle={styles.optionsScrollView}>
+            <View style={styles.optionsView}>
+              <Text>{JSON.stringify(this.state.modelo.topicos[this.state.indexTopico].perguntas[this.state.indexPergunta].opcoes)}</Text>
+              <CheckBoxList data={this.state.modelo.topicos[this.state.indexTopico].perguntas[this.state.indexPergunta].opcoes} />      
+              <AnswersBar />
+              <View style={styles.progressBarView}>
+                <ProgressBar progress={0.3} ref={ref => { this.progressBar = ref; }} />
               </View>
             </View>
           </ScrollView>
