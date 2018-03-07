@@ -80,12 +80,12 @@ class SurveyScreen extends Component {
             <View style={styles.optionsView}>
               <Text>{JSON.stringify(this.state.modelo.topicos[this.state.indexTopico].perguntas[this.state.indexPergunta].opcoes)}</Text>
               <CheckBoxList data={this.state.modelo.topicos[this.state.indexTopico].perguntas[this.state.indexPergunta].opcoes} />      
-              <AnswersBar />
-              <View style={styles.progressBarView}>
-                <ProgressBar progress={0.3} ref={ref => { this.progressBar = ref; }} />
-              </View>
             </View>
           </ScrollView>
+        </View>
+        <AnswersBar />
+        <View style={styles.progressBarView}>
+          <ProgressBar progress={0.3} ref={ref => { this.progressBar = ref; }} />
         </View>
       </View>
     );

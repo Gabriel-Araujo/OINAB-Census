@@ -37,6 +37,8 @@ export default StyleSheet.create({
   answersView: { 
     flex: 1, 
     flexDirection: 'row', 
+    paddingTop: 10,
+    paddingBottom: 10,
     justifyContent: 'space-around'
   },
   checkBoxListView: {
@@ -46,6 +48,7 @@ export default StyleSheet.create({
   },
   checkBoxItemView: {
     padding: 10,
+    marginBottom: 5,
     flexDirection: 'row',
     borderColor: '#D0D0D0', //'#737373',
     borderRadius: 10,
